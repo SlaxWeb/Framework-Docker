@@ -38,6 +38,7 @@ RUN ln -s /etc/php/7.0/fpm/conf.d/20-swoole.ini /etc/php/7.0/cli/conf.d/20-swool
 
 # Add PHP FPM Pool config
 ADD fpm-pool.conf /etc/php/7.0/fpm/pool.d/www.conf
+RUN mkdir /run/php/
 
 # Add start script
 ADD start.sh /start.sh
