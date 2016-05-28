@@ -4,22 +4,23 @@ MAINTAINER Tomaz Lovrec <tomaz.lovrec@gmail.com>
 # Install packages
 RUN apt-get update
 RUN apt-get install -y \
-php-common \
-php-pear \
-php-xml \
-php7.0-cli \
-php7.0-common \
-php7.0-dev \
-php7.0-fpm \
-php7.0-intl \
-php7.0-json \
-php7.0-mysql \
-php7.0-opcache \
-php7.0-pgsql \
-php7.0-readline \
-php7.0-xml \
-php7.0-curl \
-nginx
+    php-common \
+    php-pear \
+    php-xml \
+    php7.0-cli \
+    php7.0-common \
+    php7.0-dev \
+    php7.0-fpm \
+    php7.0-intl \
+    php7.0-json \
+    php7.0-mysql \
+    php7.0-opcache \
+    php7.0-pgsql \
+    php7.0-readline \
+    php7.0-xml \
+    php7.0-curl \
+    nginx \
+    git
 
 # Create www-user user
 RUN adduser www-user
