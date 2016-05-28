@@ -18,6 +18,7 @@ php7.0-opcache \
 php7.0-pgsql \
 php7.0-readline \
 php7.0-xml \
+php7.0-curl \
 nginx
 
 # Create www-user user
