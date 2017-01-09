@@ -27,6 +27,8 @@ RUN apt-get install -y \
 RUN adduser www-user
 
 # Configure web server (nginx)
+RUN rm -f /etc/nginx/sites-available/default
+RUN rm -f /etc/nginx/sites-enabled/default
 ADD vhost.conf /etc/nginx/sites-available/default
 RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
