@@ -19,6 +19,7 @@ RUN apt-get install -y \
     php7.0-readline \
     php7.0-xml \
     php7.0-curl \
+    php7.0-mbstring \
     nginx \
     git
 
@@ -26,11 +27,11 @@ RUN apt-get install -y \
 RUN adduser www-user
 
 # Create directories
-RUN mkdir /var/www/framework.dev
+RUN mkdir /var/www/
 
 # Configure web server (nginx)
-ADD vhost.conf /etc/nginx/sites-available/framework.dev.conf
-RUN ln -s /etc/nginx/sites-available/framework.dev.conf /etc/nginx/sites-enabled/framework.dev.conf
+ADD vhost.conf /etc/nginx/sites-available/app.conf
+RUN ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Install swoole php extension
@@ -44,7 +45,7 @@ RUN mkdir /run/php/
 
 # Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === '92102166af5abdb03f49ce52a40591073a7b859a86e8ff13338cf7db58a19f7844fbc0bb79b2773bf30791e935dbd938') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === '55d6ead61b29c7bdee5cccfb50076874187bd9f21f65d8991d46ec5cc90518f447387fb9f76ebae1fbbacf329e583e30') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN chmod +x composer.phar && \
