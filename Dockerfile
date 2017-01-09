@@ -27,8 +27,8 @@ RUN apt-get install -y \
 RUN adduser www-user
 
 # Configure web server (nginx)
-ADD vhost.conf /etc/nginx/sites-available/app.conf
-RUN ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
+ADD vhost.conf /etc/nginx/sites-available/default
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Install swoole php extension
