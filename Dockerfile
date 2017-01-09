@@ -26,9 +26,6 @@ RUN apt-get install -y \
 # Create www-user user
 RUN adduser www-user
 
-# Create directories
-RUN mkdir /var/www/
-
 # Configure web server (nginx)
 ADD vhost.conf /etc/nginx/sites-available/app.conf
 RUN ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
